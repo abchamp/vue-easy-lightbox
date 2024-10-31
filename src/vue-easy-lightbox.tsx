@@ -277,6 +277,7 @@ export default defineComponent({
 
     // actions for changing img
     const zoom = (newScale: number) => {
+      console.log("call test")
       if (Math.abs(1 - newScale) < 0.05) {
         newScale = 1
       } else if (Math.abs(imgState.maxScale - newScale) < 0.05) {
