@@ -127,7 +127,8 @@ export default defineComponent({
     'on-prev-click': (oldIndex: number, newIndex: number) => true,
     'on-next-click': (oldIndex: number, newIndex: number) => true,
     'on-index-change': (oldIndex: number, newIndex: number) => true,
-    'on-rotate': (deg: number) => true
+    'on-rotate': (deg: number) => true,
+    'on-zoom': (newScale: number) => true
     /* eslint-enable @typescript-eslint/no-unused-vars */
   },
   setup(props, { emit, slots }) {
@@ -283,6 +284,7 @@ export default defineComponent({
       }
       imgWrapperState.lastScale = imgWrapperState.scale
       imgWrapperState.scale = newScale
+      emit('on-zoom', newScale)
     }
 
     const zoomIn = () => {
