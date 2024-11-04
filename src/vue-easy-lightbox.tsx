@@ -481,9 +481,13 @@ export default defineComponent({
       }
     )
 
-    watch(imgWrapperState, (_newValueState: IImgWrapperState) => {
-      emit('on-wrapper-state-change', _newValueState)
-    })
+    watch(
+      () => imgWrapperState,
+      (_newValueState: IImgWrapperState) => {
+        console.log('imgWrapperState change')
+        emit('on-wrapper-state-change', _newValueState)
+      }
+    )
 
     const disableScrolling = () => {
       if (!document) return
