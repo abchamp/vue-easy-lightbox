@@ -482,7 +482,6 @@ export default defineComponent({
     )
 
     watch(imgWrapperState, (_newValueState: IImgWrapperState) => {
-      console.log('imgWrapperState change')
       emit('on-wrapper-state-change', _newValueState)
     })
 
