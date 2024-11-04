@@ -128,7 +128,8 @@ export default defineComponent({
     'on-next-click': (oldIndex: number, newIndex: number) => true,
     'on-index-change': (oldIndex: number, newIndex: number) => true,
     'on-rotate': (deg: number) => true,
-    'on-zoom': (newScale: number) => true
+    'on-zoom': (newScale: number) => true,
+    'on-wrapper-state-change': (currentWrapperState: IImgWrapperState) => true
     /* eslint-enable @typescript-eslint/no-unused-vars */
   },
   setup(props, { emit, slots }) {
@@ -479,6 +480,10 @@ export default defineComponent({
         }
       }
     )
+
+    watch(imgWrapperState, (_newValueState: IImgWrapperState) => {
+      emit('on-wrapper-state-change', _newValueState)
+    })
 
     const disableScrolling = () => {
       if (!document) return
